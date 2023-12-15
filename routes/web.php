@@ -30,6 +30,4 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/signin', function (){
-    return view('guest.signin');
-});
+Route::view('/profil', 'admin.profil');
