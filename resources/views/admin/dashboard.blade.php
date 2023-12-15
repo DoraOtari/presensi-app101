@@ -1,7 +1,7 @@
 <x-template>
     <div class="row justify-content-center mt-lg-5">
         <div class="col-lg-5">
-            <h1>selamat datang di aplikasi presensi</h1>
+            <h1 class="text-uppercase" style="color: darkcyan;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">selamat datang di aplikasi presensi</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In laborum quia ex minima culpa optio deserunt atque. Possimus quibusdam ut adipisci veniam inventore temporibus architecto porro quia! Inventore eius voluptas distinctio asperiores. Tempore impedit quas hic commodi veniam ea sit.</p>
             <a class="btn btn-lg rounded-pill btn-primary" href="#">Performa</a>
         </div>

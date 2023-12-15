@@ -40,15 +40,10 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a
-                                    class="nav-link active"
-                                    aria-current="page"
-                                    href="#"
-                                    >Home</a
-                                >
+                                <a class="nav-link active" aria-current="page" href="{{ url('/dashboard') }}" ><i class="bi bi-house"></i> Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
+                                <a class="nav-link" href="{{ url('/profil') }}"><i class="bi bi-person-bounding-box"></i> Profil</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a
