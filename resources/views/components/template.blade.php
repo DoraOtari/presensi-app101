@@ -73,9 +73,10 @@
                             </ul>
                             <div class="hstack gap-2">
                                 <img src="https://placehold.co/35" class="img-thumbnail rounded-circle">
-                                <small class="lead">Guest</small>
+                                <small class="lead text-capitalize">{{ Auth::user()->name }}</small>
                                 <div class="vr"></div>
                                 <form action="{{ route('logout') }}" method="post">
+                                    @csrf
                                     <button type="submit" class="btn btn-sm btn-danger rounded-circle">
                                         <i class="bi-power"></i>
                                     </button>

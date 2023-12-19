@@ -1,10 +1,18 @@
 <x-template>
     {{-- bs5-card-default --}}
     <div class="card col-lg-6 mx-auto mt-3">
+      @if ($errors->any())
+          <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+      @endif
         <div class="card-body">
             <h4 class="card-title">Sign In</h4>
             <p class="card-text">masuk untuk dapat menggunakan aplikasi</p>
-            <form action="" method="post">
+            <form action="{{ route('login') }}" method="post">
+              @csrf
                 {{-- bs5-form-input --}}
                 <div class="mb-3">
                   <label class="form-label">Email</label>

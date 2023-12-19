@@ -31,3 +31,9 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::view('/profil', 'admin.profil');
+
+Route::post('/profil', function(){
+    $path = request('avatar')->store('Avatars');
+    DB::table('users')->where('id',auth()->user()->id)->update(['avatar' => $path]);
+    return redirect('/profil')->with('pesan', 'Berhasil upload foto');
+});
