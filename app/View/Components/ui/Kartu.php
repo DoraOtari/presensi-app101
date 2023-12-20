@@ -11,7 +11,7 @@ class Kartu extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public $judul, public $tombol = null)
+    public function __construct(public $tombol = null)
     {
         //
     }

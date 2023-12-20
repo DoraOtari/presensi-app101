@@ -37,3 +37,7 @@ Route::post('/profil', function(){
     DB::table('users')->where('id',auth()->user()->id)->update(['avatar' => $path]);
     return redirect('/profil')->with('pesan', 'Berhasil upload foto');
 });
+
+Route::get('/jabatan', function(){
+    return view('jabatan.tampil');
+});

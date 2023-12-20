@@ -1,5 +1,5 @@
 <x-template>
-    <div class="col-lg-6">
+    <div class="col-lg-6 mx-auto">
        <x-ui.kartu>
             <x-slot name='judul'>
                 <i class="bi-diagram-2"></i> Data Jabatan
