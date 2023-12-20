@@ -48,31 +48,17 @@
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::is('profil') ? 'active' : '' }}" href="{{ url('/profil') }}"><i class="bi bi-person-bounding-box"></i> Profil</a>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a
-                                        class="nav-link dropdown-toggle"
-                                        href="#"
-                                        id="dropdownId"
-                                        data-bs-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                        >Dropdown</a
-                                    >
-                                    <div
-                                        class="dropdown-menu"
-                                        aria-labelledby="dropdownId"
-                                    >
-                                        <a class="dropdown-item" href="#"
-                                            >Action 1</a
-                                        >
-                                        <a class="dropdown-item" href="#"
-                                            >Action 2</a
-                                        >
-                                    </div>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::is('jabatan') ? 'active' : '' }}" href="{{ url('/jabatan') }}"><i class="bi bi-diagram-2"></i> Jabatan</a>
                                 </li>
+                                
                             </ul>
                             <div class="hstack gap-2">
-                                <img src="https://placehold.co/35" class="img-thumbnail rounded-circle">
+                                @if (Auth::user()->avatar)
+                                    <img src="{{ asset(Auth::user()->avatar) }}" width="35" class="img-thumbnail rounded-circle">
+                                @else
+                                    <img src="https://placehold.co/35?text=A" class="img-thumbnail rounded-circle">
+                                @endif
                                 <small class="lead text-capitalize">{{ Auth::user()->name }}</small>
                                 <div class="vr"></div>
                                 <form action="{{ route('logout') }}" method="post">
