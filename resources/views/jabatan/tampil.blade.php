@@ -15,12 +15,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($jabatan as $item)
                         <tr class="table-group-divider">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $item->nama_jabatan }}</td>
+                            <td>{{ $item->gaji_jabatan }}</td>
+                            <td>{{ $item->status_jabatan }}</td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

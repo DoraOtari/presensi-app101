@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,5 +40,6 @@ Route::post('/profil', function(){
 });
 
 Route::get('/jabatan', function(){
-    return view('jabatan.tampil');
+    $jabatan = DB::table('jabatan')->get(); //perintah untuk mengambil data dari database
+    return view('jabatan.tampil', ['jabatan' => $jabatan]); //perintah kirim data ke alamat view tujuan
 });
