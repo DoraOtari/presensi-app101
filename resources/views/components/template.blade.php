@@ -51,7 +51,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::is('jabatan') ? 'active' : '' }}" href="{{ url('/jabatan') }}"><i class="bi bi-diagram-2"></i> Jabatan</a>
                                 </li>
-                                
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::is('karyawan') ? 'active' : '' }}" href="{{ url('/karyawan') }}"><i class="bi bi-people"></i> Karyawan</a>
+                                </li>
                             </ul>
                             <div class="hstack gap-2">
                                 @if (Auth::user()->avatar)
