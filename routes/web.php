@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KaryawanController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
@@ -42,4 +43,8 @@ Route::post('/profil', function(){
 Route::get('/jabatan', function(){
     $jabatan = DB::table('jabatan')->get(); //perintah untuk mengambil data dari database
     return view('jabatan.tampil', ['jabatan' => $jabatan]); //perintah kirim data ke alamat view tujuan
+});
+
+Route::controller(KaryawanController::class)->group(function(){
+    Route::get('/karyawan','tampil'); //rute memanggil fungsi tampil
 });
