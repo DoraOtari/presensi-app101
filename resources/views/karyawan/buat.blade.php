@@ -11,7 +11,10 @@
                 {{-- formulir --}}
                 <form action="{{ url('/karyawan') }}" method="post">
                     <livewire:nik-otomatis />
-                    <input type="text" name="nama" id="" class="form-control">
+                    <div class="mb-3">
+                        <label for="" class="form-lable">Nama Karyawan</label>
+                        <input type="text" name="nama" class="form-control" placeholder="masukan nama karyawan">
+                    </div>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="mb-3">
@@ -33,6 +36,7 @@
                             </select>
                         </div>
                     </div>
+                    <livewire:api-daerah />
                 </form>
                 {{-- tutup formulir --}}
             </div>

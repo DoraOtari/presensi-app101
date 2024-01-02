@@ -47,4 +47,5 @@ Route::get('/jabatan', function(){
 
 Route::controller(KaryawanController::class)->group(function(){
     Route::get('/karyawan','tampil'); //rute memanggil fungsi tampil
+    Route::get('/karyawan/buat','buat'); //rute memanggil fungsi buat
 });

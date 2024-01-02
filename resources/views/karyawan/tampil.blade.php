@@ -5,7 +5,7 @@
         <i class="bi-people"></i> Data Karyawan
         </x-slot>
         <x-slot name='tombol'>
-            <a href="{{ url('/karyawan/tambah') }}" class="btn btn-primary"><i class="bi-plus"></i> Tambah</a>
+            <a href="{{ url('/karyawan/buat') }}" class="btn btn-primary"><i class="bi-plus"></i> Buat</a>
         </x-slot>
         <div class="table-responsive">
             <table class="table">
