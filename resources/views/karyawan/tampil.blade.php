@@ -1,5 +1,10 @@
 <x-template>
     <div class="col-lg-10 mx-auto mt-3">
+        @if (session('pesan'))
+            <div class="alert alert-primary" role="alert">
+                <strong><i class="bi-bell"></i></strong> {{ session('pesan') }}
+            </div>
+        @endif
     <x-ui.kartu>
         <x-slot name='judul'>
         <i class="bi-people"></i> Data Karyawan
