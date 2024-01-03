@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class KaryawanController extends Controller
 {
     function tampil() {
-        return view('karyawan.tampil'); //perintah untuk menampilkan view
+        return view('karyawan.tampil', ['karyawan' => Karyawan::all()]); //perintah untuk menampilkan view
     }
 
     function buat() {

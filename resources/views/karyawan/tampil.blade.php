@@ -27,7 +27,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="table-group-divider"></tr>
+                    @foreach ($karyawan as $item)
+                    <tr class="table-group-divider">
+                        <td><img src="{{ asset($item->user->avatar) }}" width="45"></td>
+                        <td>{{ $item->nik }}</td>
+                        <td>{{ $item->nama }}</td>
+                        <td>{{ $item->jabatan->nama_jabatan }}</td>
+                        <td>{{ $item->user->email }}</td>
+                        <td>
+                            <a href="" class="btn btn-warning">
+                                <i class="bi-eye"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="" class="btn btn-info">
+                                <i class="bi-pen"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <form action="" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-danger"> <i class="bi-trash"></i></button>
+                                
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
