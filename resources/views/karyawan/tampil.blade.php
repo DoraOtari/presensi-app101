@@ -45,8 +45,9 @@
                             </a>
                         </td>
                         <td>
-                            <form action="" method="post">
+                            <form action='{{ url("karyawan/$item->id") }}' method="post">
                                 @csrf
+                                @method('delete')
                                 <button type="submit" class="btn btn-danger"> <i class="bi-trash"></i></button>
                                 
                             </form>

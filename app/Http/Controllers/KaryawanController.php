@@ -37,4 +37,9 @@ class KaryawanController extends Controller
     function detail(Karyawan $karyawan) {
         return view('karyawan.detail', ['karyawan' => $karyawan]);
     }
+
+    function hapus(Karyawan $karyawan) {
+        Karyawan::destroy($karyawan->id);
+        return redirect('/karyawan')->with('pesan', "Berhasil hapus karyawan $karyawan->nama");
+    }
 }
