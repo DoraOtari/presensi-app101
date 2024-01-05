@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\DB;
 class KaryawanController extends Controller
 {
     function tampil() {
-        return view('karyawan.tampil', ['karyawan' => Karyawan::all()]); //perintah untuk menampilkan view
+        return view('karyawan.tampil', [
+            'karyawan' => Karyawan::with(['jabatan','user'])->get(),
+        ]); //perintah untuk menampilkan view
     }
 
     function buat() {
@@ -30,5 +32,9 @@ class KaryawanController extends Controller
         ]); //kode simpan data ke database
 
         return redirect('/karyawan')->with('pesan', 'berhasil simpan karyawan');
+    }
+
+    function detail(Karyawan $karyawan) {
+        return view('karyawan.detail', ['karyawan' => $karyawan]);
     }
 }

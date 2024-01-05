@@ -35,7 +35,7 @@
                         <td>{{ $item->jabatan->nama_jabatan }}</td>
                         <td>{{ $item->user->email }}</td>
                         <td>
-                            <a href="" class="btn btn-warning">
+                            <a href='{{ url("karyawan/$item->id") }}' class="btn btn-warning">
                                 <i class="bi-eye"></i>
                             </a>
                         </td>
