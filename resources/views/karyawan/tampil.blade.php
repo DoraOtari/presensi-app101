@@ -40,7 +40,7 @@
                             </a>
                         </td>
                         <td>
-                            <a href="" class="btn btn-info">
+                            <a href='{{ url("/karyawan/$item->id/edit") }}' class="btn btn-info">
                                 <i class="bi-pen"></i>
                             </a>
                         </td>

@@ -50,5 +50,7 @@ Route::controller(KaryawanController::class)->group(function(){
     Route::get('/karyawan/buat','buat'); //rute memanggil fungsi buat
     Route::post('/karyawan','simpan'); //rute memanggil fungsi simpan
     Route::get('/karyawan/{karyawan}','detail');
+    Route::get('/karyawan/{karyawan}/edit', 'edit');
+    Route::put('/karyawan/{karyawan}', 'update');
     Route::delete('karyawan/{karyawan}', 'hapus');
 });

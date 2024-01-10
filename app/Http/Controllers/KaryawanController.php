@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jabatan;
 use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -41,5 +42,9 @@ class KaryawanController extends Controller
     function hapus(Karyawan $karyawan) {
         Karyawan::destroy($karyawan->id);
         return redirect('/karyawan')->with('pesan', "Berhasil hapus karyawan $karyawan->nama");
+    }
+
+    function edit(Karyawan $karyawan) {
+        return view('karyawan.edit',['karyawan' => $karyawan, 'jabatan' => Jabatan::all()]);
     }
 }
