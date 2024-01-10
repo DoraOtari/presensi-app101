@@ -9,12 +9,12 @@
                 </h4>
                 <p class="card-text">update data karyawan baru</p>
                 {{-- formulir --}}
-                <form action="{{ url('/karyawan') }}" method="post">
+                <form action='{{ url("/karyawan/$karyawan->id") }}' method="post">
                     @csrf
-                    <livewire:nik-otomatis />
+                    <livewire:nik-otomatis :karyawan="$karyawan" />
                     <div class="mb-3">
                         <label for="" class="form-lable">Nama Karyawan</label>
-                        <input type="text" name="nama" class="form-control" placeholder="masukan nama karyawan">
+                        <input value="{{ $karyawan->nama }}" type="text" name="nama" class="form-control" placeholder="masukan nama karyawan">
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
@@ -22,8 +22,8 @@
                                 <label class="form-label">Jenis Kelmain</label>
                                 <select class="form-select" name="kelamin" >
                                     <option selected disabled>--Pilih Satu--</option>
-                                    <option value="laki-laki">Laki-laki</option>
-                                    <option value="perempuan">Perempuan</option>
+                                    <option @selected($karyawan->kelamin == 'laki-laki') value="laki-laki">Laki-laki</option>
+                                    <option @selected($karyawan->kelamin == 'perempuan') value="perempuan">Perempuan</option>
                                 </select>
                             </div>
                         </div>
@@ -32,15 +32,15 @@
                                 <select class="form-select" name="jabatan_id" >
                                     <option selected disabled>--Pilih Satu--</option>
                                     @foreach ($jabatan as $item)
-                                        <option value="{{ $item->id }}">{{ $item->nama_jabatan }}</option>
+                                        <option  @selected($karyawan->jabatan_id == $item->id) value="{{ $item->id }}">{{ $item->nama_jabatan }}</option>
                                     @endforeach
                             </select>
                         </div>
                     </div>
-                    <livewire:api-daerah />
+                    <livewire:api-daerah :karyawan="$karyawan" />
                     <div class="mb-3">
                         <label class="form-label">Alamat</label>
-                        <textarea name="alamat" placeholder="masukan alamat karyawan" class="form-control"></textarea>
+                        <textarea name="alamat" placeholder="masukan alamat karyawan" class="form-control">{{ $karyawan->alamat }}</textarea>
                     </div>
                     <button type="submit" class="btn btn-primary float-end"> Submit </button>
                 </form>

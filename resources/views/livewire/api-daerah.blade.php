@@ -12,7 +12,7 @@
     </div>
     <div class="col-lg-6">
         <label class="form-label">Kota</label>
-        <select name="kota" class="form-select">
+        <select name="kota" class="form-select" wire:model='kota_id'>
             <option value="null" disabled selected>--pilih satu--</option>
             @foreach ($kota as $item)
                 <option value="{{ $item->id.'/'.$item->name }}">{{ $item->name }}</option>

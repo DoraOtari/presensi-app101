@@ -47,4 +47,20 @@ class KaryawanController extends Controller
     function edit(Karyawan $karyawan) {
         return view('karyawan.edit',['karyawan' => $karyawan, 'jabatan' => Jabatan::all()]);
     }
+
+    function update(Karyawan $karyawan,Request $request)  {
+        Karyawan::where('id', $karyawan->id)->update([
+            'jabatan_id' => $request->jabatan_id,
+            'user_id' => $request->user_id,
+            'nik' => $request->nik,
+            'nama' => $request->nama,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'kelamin' => $request->kelamin,
+            'provinsi' => $request->provinsi,
+            'kota' => $request->kota,
+            'alamat' => $request->alamat,
+        ]); //kode update data ke database
+
+        return redirect('/karyawan')->with('pesan', 'berhasil update karyawan');
+    }
 }

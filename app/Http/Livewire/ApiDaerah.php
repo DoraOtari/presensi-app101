@@ -7,12 +7,19 @@ use Livewire\Component;
 
 class ApiDaerah extends Component
 {
-    public $provinsi_id;
+    public $provinsi_id, $kota_id;
+
+    function mount($karyawan) {
+        if ($karyawan != null) {
+            $this->provinsi_id = $karyawan->provinsi;
+            $this->kota_id = $karyawan->kota;
+        }
+    }
 
     function provinsi() {
         $provinsi = Http::get('https://emsifa.github.io/api-wilayah-indonesia/api/provinces.json')->object();
         // dd($provinsi);
-        return $provinsi;
+        return $provinsi ?? [];
     }
 
     function kota() {
