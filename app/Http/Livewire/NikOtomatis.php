@@ -9,7 +9,7 @@ class NikOtomatis extends Component
 {
     public $user_id, $tgl;
 
-    function mount($karyawan) {
+    function mount($karyawan = null) {
         if ($karyawan != null) {
             $this->user_id = $karyawan->user_id;
             $this->tgl = $karyawan->tanggal_lahir;

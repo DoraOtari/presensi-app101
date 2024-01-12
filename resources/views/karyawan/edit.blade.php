@@ -11,6 +11,7 @@
                 {{-- formulir --}}
                 <form action='{{ url("/karyawan/$karyawan->id") }}' method="post">
                     @csrf
+                    @method('put')
                     <livewire:nik-otomatis :karyawan="$karyawan" />
                     <div class="mb-3">
                         <label for="" class="form-lable">Nama Karyawan</label>

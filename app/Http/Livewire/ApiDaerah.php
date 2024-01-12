@@ -9,7 +9,7 @@ class ApiDaerah extends Component
 {
     public $provinsi_id, $kota_id;
 
-    function mount($karyawan) {
+    function mount($karyawan = null) {
         if ($karyawan != null) {
             $this->provinsi_id = $karyawan->provinsi;
             $this->kota_id = $karyawan->kota;
