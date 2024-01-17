@@ -1,9 +1,13 @@
 <?php
 
-use App\Http\Controllers\KaryawanController;
+use App\Models\Kehadiran;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\KaryawanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +22,7 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
@@ -53,4 +57,45 @@ Route::controller(KaryawanController::class)->group(function(){
     Route::get('/karyawan/{karyawan}/edit', 'edit');
     Route::put('/karyawan/{karyawan}', 'update');
     Route::delete('karyawan/{karyawan}', 'hapus');
+});
+
+Route::post('/presensi', function (Request $req) {
+
+    $foto64 = explode(',', $req->foto)[1];
+    $namaFoto = uniqid().'.jpg';
+    $lokasiFoto = 'foto absen/'.$namaFoto;
+    $foto = base64_decode($foto64);
+    $waktu = date('d-m-Y');
+    list($tgl, $bln, $thn) = explode('-', $waktu);
+
+    if ($req->keterangan == 'masuk') {
+        Kehadiran::create(
+            [
+                'user_id'               => Auth::user()->id,
+                'foto_presensi_masuk'   => $lokasiFoto,
+                'tgl'                   => $tgl,
+                'bln'                   => $bln,
+                'thn'                   => $thn,
+                'waktu_presensi_masuk'  => date('H.i'),
+                'lokasi'                => $req->lokasi,
+            ]
+            );
+    } else {
+        $karyawan = Kehadiran::where('user_id', Auth::user()->id)->orderBy('id','desc')->first();
+        $tes = Kehadiran::where('id', $karyawan->id)->where('tgl', $tgl)->update(
+            [
+                'foto_presensi_keluar'    => $lokasiFoto,
+                'waktu_presensi_keluar'   => date('H.i'),
+                
+                ]
+            );
+            // dd($tes);
+    }
+    
+    Storage::put($lokasiFoto, $foto);
+    return redirect('/')->with('pesan', "Berhasil absen $req->keterangan");
+});
+
+Route::get('/riwayat-absensi', function(){
+    return view('absensi.riwayat_absen', ['kehadiran' => Kehadiran::with('user')->get()]);
 });

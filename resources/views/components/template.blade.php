@@ -8,11 +8,12 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
         @livewireStyles
         @livewireScripts
+        @stack('styleku')
     </head>
     <body>
         <nav class="navbar navbar-light bg-white navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url('dashboard') }}"><i class="bi-camera"></i> Presensi App</a>
+                <a class="navbar-brand" href="{{ url('/') }}"><i class="bi-camera"></i> Presensi App</a>
                 <button
                     class="navbar-toggler"
                     type="button"
@@ -54,6 +55,10 @@
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::is('karyawan*') ? 'active' : '' }}" href="{{ url('/karyawan') }}"><i class="bi bi-people"></i> Karyawan</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::is('riwayat_absensi*') ? 'active' : '' }}" href="{{ url('riwayat-absensi') }}">
+                                      <i class="bi bi-calendar"></i> Riwayat Absensi</a>
+                                  </li>
                             </ul>
                             <div class="hstack gap-2">
                                 @if (Auth::user()->avatar)
@@ -82,5 +87,6 @@
         
         {{ $slot }}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        @stack('scriptku')
     </body>
 </html>
